@@ -1,5 +1,6 @@
 package com.mathrusoft.layoutsindepth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -56,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener mOnCancelClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
+            Intent intent = new Intent(MainActivity.this, ActivityDemoWidget.class);
+            MainActivity.this.startActivity(intent);
+
             MainActivity.this.finish();
             Toast.makeText(MainActivity.this, "Thank you", Toast.LENGTH_SHORT).show();
         }
