@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal"
+        android:text="Student Details" />
+
+    <EditText
+        android:id="@+id/student_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student Name" />
+
+    <EditText
+        android:id="@+id/student_branch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student Branch" />
+
+    <EditText
+        android:id="@+id/student_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student Age" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Student" />
+
+</LinearLayout>
