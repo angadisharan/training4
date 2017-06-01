@@ -1,5 +1,6 @@
 package com.mathrusoft.studentdatabase.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mathrusoft.studentdatabase.R;
+import com.mathrusoft.studentdatabase.db.DataSource;
 import com.mathrusoft.studentdatabase.model.Student;
+
+import java.util.List;
 
 /**
  * Created by sharanangadi on 30/05/17.
@@ -20,6 +25,8 @@ import com.mathrusoft.studentdatabase.model.Student;
 public class FragmentSaveStudent extends Fragment {
     public static final String TAG = "MYAPP";
 
+
+    Context mContext;
 
     EditText mEditTextName;
     EditText mEditTextAge;
@@ -36,6 +43,8 @@ public class FragmentSaveStudent extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        mContext = getContext();
 
         View view = getView();
         mEditTextAge = (EditText) view.findViewById(R.id.student_age);
@@ -65,12 +74,32 @@ public class FragmentSaveStudent extends Fragment {
             mStudent.setName(mEditTextName.getText().toString());
 
             saveStudent(mStudent);
-            
+
         }
     };
 
     private void saveStudent(Student mStudent) {
+        //TODO
+
+        DataSource dataSource = new DataSource(mContext);
+
+        long insetId = dataSource.saveStudent(mStudent);
+        Toast.makeText(mContext, "inserted " + insetId, Toast.LENGTH_SHORT).show();
+
+
+        getStudents();
+    }
+
+    private void getStudents() {
+
+        DataSource dataSource = new DataSource(mContext);
+        List<Student> studentList = dataSource.getAllStudents();
+
+        for (Student student : studentList) {
+            Log.d(TAG, " sutdent : " + student.getName() + " , " + student.getBranch() + " , " + student.getAge());
+        }
 
     }
+
 
 }
