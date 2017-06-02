@@ -4,12 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mathrusoft.studentdatabase.R;
@@ -27,6 +29,8 @@ public class FragmentSaveStudent extends Fragment {
 
 
     Context mContext;
+
+    TextView mTextViewMessage;
 
     EditText mEditTextName;
     EditText mEditTextAge;
@@ -50,6 +54,7 @@ public class FragmentSaveStudent extends Fragment {
         mEditTextAge = (EditText) view.findViewById(R.id.student_age);
         mEditTextName = (EditText) view.findViewById(R.id.student_name);
         mEditTextBranch = (EditText) view.findViewById(R.id.student_branch);
+        mTextViewMessage = (TextView) view.findViewById(R.id.message);
 
         mButtonSave = (Button) view.findViewById(R.id.button_save);
         mButtonSave.setOnClickListener(mOnClickListener);
@@ -61,6 +66,23 @@ public class FragmentSaveStudent extends Fragment {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
+            if (TextUtils.isEmpty(mEditTextName.getText().toString())){
+                mEditTextName.setError("Name is empty");
+                mEditTextName.requestFocus();
+                return;
+            }
+            if (TextUtils.isEmpty(mEditTextBranch.getText().toString())){
+                mEditTextBranch.setError("Branch is empty");
+                mEditTextBranch.requestFocus();
+                return;
+            }
+            if (TextUtils.isEmpty(mEditTextAge.getText().toString())){
+                mEditTextAge.setError("Age is empty");
+                mEditTextAge.requestFocus();
+                return;
+            }
+
             Student mStudent = new Student();
             float age = 0;
             try {
@@ -79,26 +101,15 @@ public class FragmentSaveStudent extends Fragment {
     };
 
     private void saveStudent(Student mStudent) {
-        //TODO
-
         DataSource dataSource = new DataSource(mContext);
-
         long insetId = dataSource.saveStudent(mStudent);
-        Toast.makeText(mContext, "inserted " + insetId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, " Student Saved Successfully ", Toast.LENGTH_SHORT).show();
 
+        mTextViewMessage.setText(" Student Saved Successfully ");
 
-        getStudents();
-    }
-
-    private void getStudents() {
-
-        DataSource dataSource = new DataSource(mContext);
-        List<Student> studentList = dataSource.getAllStudents();
-
-        for (Student student : studentList) {
-            Log.d(TAG, " sutdent : " + student.getName() + " , " + student.getBranch() + " , " + student.getAge());
-        }
-
+        mEditTextAge.setText("");
+        mEditTextName.setText("");
+        mEditTextBranch.setText("");
     }
 
 

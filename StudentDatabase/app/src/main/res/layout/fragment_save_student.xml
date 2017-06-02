@@ -12,23 +12,40 @@
         android:gravity="center_horizontal"
         android:text="Student Details" />
 
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal"
+
+        android:text=""
+        android:textColor="#14b914" />
+
     <EditText
         android:id="@+id/student_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Student Name" />
+        android:hint="Student Name"
+        android:imeOptions="actionNext"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/student_branch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Student Branch" />
+        android:hint="Student Branch"
+        android:imeOptions="actionNext"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/student_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Student Age" />
+        android:hint="Student Age"
+        android:inputType="numberDecimal"
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/button_save"

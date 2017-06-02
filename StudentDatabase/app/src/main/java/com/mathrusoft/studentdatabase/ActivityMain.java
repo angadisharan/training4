@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.mathrusoft.studentdatabase.fragment.FragmentSaveStudent;
+import com.mathrusoft.studentdatabase.fragment.FragmentStudentList;
 
 public class ActivityMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -85,14 +86,10 @@ public class ActivityMain extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.save_student) {
             replaceFragment(new FragmentSaveStudent());
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.student_list) {
+            replaceFragment(new FragmentStudentList());
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
