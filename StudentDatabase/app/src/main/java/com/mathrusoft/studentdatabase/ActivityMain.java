@@ -18,6 +18,7 @@ import android.view.View;
 
 import com.mathrusoft.studentdatabase.fragment.FragmentSaveStudent;
 import com.mathrusoft.studentdatabase.fragment.FragmentStudentList;
+import com.mathrusoft.studentdatabase.fragment.FragmentStudentRecyclerView;
 
 public class ActivityMain extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -90,8 +91,8 @@ public class ActivityMain extends AppCompatActivity
             replaceFragment(new FragmentSaveStudent());
         } else if (id == R.id.student_list) {
             replaceFragment(new FragmentStudentList());
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.student_recycler_view) {
+            replaceFragment(new FragmentStudentRecyclerView());
         } else if (id == R.id.nav_send) {
 
         }
