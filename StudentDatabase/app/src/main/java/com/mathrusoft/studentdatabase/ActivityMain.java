@@ -1,5 +1,6 @@
 package com.mathrusoft.studentdatabase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -93,8 +94,9 @@ public class ActivityMain extends AppCompatActivity
             replaceFragment(new FragmentStudentList());
         } else if (id == R.id.student_recycler_view) {
             replaceFragment(new FragmentStudentRecyclerView());
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.launch_page_viewer) {
+            Intent intent = new Intent(this, ActivityPageViewer.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
