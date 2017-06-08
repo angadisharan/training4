@@ -9,7 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.mathrusoft.studentdatabase.R;
 import com.mathrusoft.studentdatabase.adapter.AdapterStudent;
@@ -50,9 +52,15 @@ public class FragmentStudentList extends Fragment {
         mAdapterStudent = new AdapterStudent(mContext, -1, mStudentList);
         mListView.setAdapter(mAdapterStudent);
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Student student = mStudentList.get(i);
+                Toast.makeText(mContext, student.getName() + " " + student.getAge(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         initStudentList();
-
-
     }
 
     private void initStudentList() {

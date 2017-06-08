@@ -59,7 +59,6 @@ public class FragmentSaveStudent extends Fragment {
         mButtonSave = (Button) view.findViewById(R.id.button_save);
         mButtonSave.setOnClickListener(mOnClickListener);
 
-
     }
 
 

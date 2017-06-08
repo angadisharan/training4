@@ -10,7 +10,7 @@
         android:layout_margin="5dp"
         android:padding="20dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -26,14 +26,38 @@
                 android:id="@+id/branch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
                 android:text="Branch" />
 
             <TextView
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/branch"
                 android:text="Age" />
-        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/age"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image_delete"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_delete" />
+
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/image_edit"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_pencil" />
+
+            </LinearLayout>
+        </RelativeLayout>
 
 
     </android.support.v7.widget.CardView>

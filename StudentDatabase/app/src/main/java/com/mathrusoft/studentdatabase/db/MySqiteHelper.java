@@ -83,9 +83,15 @@ public class MySqiteHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 Student student = new Student();
 
+                student.setId(cursor.getInt(cursor.getColumnIndex("_id")));
                 student.setAge(cursor.getFloat(cursor.getColumnIndex("age")));
                 student.setName(cursor.getString(cursor.getColumnIndex("name")));
                 student.setBranch(cursor.getString(cursor.getColumnIndex("branch")));
+
+
+                Log.d("MYAPP", " get======= student id " + student.getId());
+
+
                 studentList.add(student);
             }
             cursor.close();
@@ -96,4 +102,31 @@ public class MySqiteHelper extends SQLiteOpenHelper {
     }
 
 
+    public long deleteStudent(Student student) {
+        String sql = " delete from student where _id = " + student.getId() + "; ";
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        sqLiteDatabase.execSQL(sql);
+
+        sqLiteDatabase.close();
+        return 0;
+    }
+
+    public long updateStudent(Student student) {
+
+        ContentValues contentValue = new ContentValues();
+        contentValue.put("name", student.getName());
+        contentValue.put("branch", student.getBranch());
+        contentValue.put("age", student.getAge());
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+
+        Log.d("MYAPP", " student.getId() " + student.getId());
+
+        int retValue = sqLiteDatabase.update("student", contentValue, "_id = " + student.getId(), null);
+
+        sqLiteDatabase.close();
+        return retValue;
+    }
 }

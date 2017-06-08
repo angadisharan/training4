@@ -27,4 +27,12 @@ public class DataSource {
         return mMySqiteHelper.getAllStudents();
     }
 
+    public long deleteStudent(Student student) {
+        return mMySqiteHelper.deleteStudent(student);
+    }
+
+    public long updateStudent(Student student) {
+        return mMySqiteHelper.updateStudent(student);
+    }
+
 }
