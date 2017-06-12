@@ -18,6 +18,8 @@
         </activity>
 
         <service android:name=".service.ServiceDemo" />
+        <service android:name=".service.MyIntentService" />
+        <service android:name=".service.MyBoundService" />
 
     </application>
 

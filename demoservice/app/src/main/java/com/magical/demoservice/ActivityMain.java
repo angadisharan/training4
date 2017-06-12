@@ -1,23 +1,30 @@
 package com.magical.demoservice;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.magical.demoservice.service.MyBoundService;
+import com.magical.demoservice.service.MyIntentService;
 import com.magical.demoservice.service.ServiceDemo;
 
-import static com.magical.demoservice.R.id.start_service;
-import static com.magical.demoservice.R.id.stop_service;
+import static com.magical.demoservice.R.id.start_intent_service;
+import static com.magical.demoservice.R.id.stop_intent_service;
 
 public class ActivityMain extends AppCompatActivity {
+
+    Context mContext;
 
     Button mButtonStartService;
     Button mButtonStopService;
@@ -57,14 +64,20 @@ public class ActivityMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mContext = this.getApplicationContext();
         //Just to show notification example
-        showNotifictaion();
+//        showNotifictaion();
 
-        mButtonStartService = (Button) findViewById(start_service);
-        mButtonStopService = (Button) findViewById(stop_service);
+        mButtonStartService = (Button) findViewById(R.id.start_intent_service);
+        mButtonStopService = (Button) findViewById(R.id.start_service);
 
         mButtonStartService.setOnClickListener(mOnClickListener);
         mButtonStopService.setOnClickListener(mOnClickListener);
+
+
+        findViewById(start_intent_service).setOnClickListener(mOnClickListener);
+        findViewById(stop_intent_service).setOnClickListener(mOnClickListener);
+        findViewById(R.id.print_numbers_form_service).setOnClickListener(mOnClickListener);
 
     }
 
@@ -80,7 +93,51 @@ public class ActivityMain extends AppCompatActivity {
                     service = new Intent(ActivityMain.this, ServiceDemo.class);
                     stopService(service);
                     break;
+                case R.id.start_intent_service:
+                    service = new Intent(ActivityMain.this, MyIntentService.class);
+                    startService(service);
+                    break;
+                case R.id.stop_intent_service:
+                    service = new Intent(ActivityMain.this, MyIntentService.class);
+                    stopService(service);
+                    break;
+
+                case R.id.print_numbers_form_service:
+                    if (myBoundService != null) {
+                        myBoundService.pintNumbers();
+                    }
+                    break;
             }
         }
     };
+
+
+    MyBoundService myBoundService;
+    ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            Toast.makeText(mContext, "Service Connected", Toast.LENGTH_SHORT).show();
+            myBoundService = ((MyBoundService.MyBinder) iBinder).getService();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            myBoundService = null;
+            Toast.makeText(mContext, "Service dis Connected", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, MyBoundService.class);
+        bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbindService(mServiceConnection);
+    }
 }

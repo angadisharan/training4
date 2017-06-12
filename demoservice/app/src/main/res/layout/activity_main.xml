@@ -34,4 +34,29 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="139dp" />
 
+    <Button
+        android:id="@+id/start_intent_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Intent service"
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="25dp" />
+
+    <Button
+        android:id="@+id/stop_intent_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop intent service"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="139dp" />
+
+    <Button
+        android:id="@+id/print_numbers_form_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Print numbers fom service"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="139dp" />
+
 </LinearLayout>
