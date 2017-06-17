@@ -1,9 +1,10 @@
 package com.magical.demojson;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -43,6 +44,16 @@ public class ActivityLogin extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("my_pref", MODE_PRIVATE);
+
+        if (!TextUtils.isEmpty(sharedPreferences.getString("user_token", ""))) {
+            Intent intent = new Intent(this, ActivityMain.class);
+            startActivity(intent);
+            ActivityLogin.this.finish();
+            return;
+        }
 
         mContext = this.getApplication();
 
@@ -90,10 +101,16 @@ public class ActivityLogin extends AppCompatActivity {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
 
-                    AlertDialog alertDialog = new AlertDialog.Builder(ActivityLogin.this)
-                            .setMessage(jsonResponse.getString("message"))
-                            .setTitle(jsonResponse.getString("title"))
-                            .show();
+                    SharedPreferences sharedPreferences = getSharedPreferences("my_pref", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    editor.putString("user_token", jsonResponse.getString("token"));
+                    editor.commit();
+
+//                    AlertDialog alertDialog = new AlertDialog.Builder(ActivityLogin.this)
+//                            .setMessage(jsonResponse.getString("message"))
+//                            .setTitle(jsonResponse.getString("title"))
+//                            .show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();

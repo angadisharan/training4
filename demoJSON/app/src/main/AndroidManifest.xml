@@ -28,6 +28,8 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ActivityNewsDetails" />
+
 
     </application>
 
