@@ -6,7 +6,9 @@ package com.mathrusoft.mimiclogin.model;
 
 public class ModelStudent {
 
+
     private String name;
+
     private String address;
     private String usn;
     private int age;

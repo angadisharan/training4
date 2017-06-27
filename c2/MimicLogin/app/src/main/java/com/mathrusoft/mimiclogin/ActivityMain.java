@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mathrusoft.mimiclogin.model.ModelNews;
@@ -17,6 +19,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by sharanangadi on 26/06/17.
  */
@@ -25,10 +29,14 @@ public class ActivityMain extends AppCompatActivity {
 
     Context mContext;
 
+
+    private TextView mTextViewTitle;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mContext = this.getApplicationContext();
 
         mimicServerResponse();
