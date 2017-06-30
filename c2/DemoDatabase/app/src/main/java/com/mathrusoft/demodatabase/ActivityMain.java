@@ -1,5 +1,6 @@
 package com.mathrusoft.demodatabase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -78,6 +79,9 @@ public class ActivityMain extends AppCompatActivity
             replaceFragment(new FragmentSaveStudent());
         } else if (id == R.id.student_list) {
             replaceFragment(new FragmentGetStudentList());
+        } else if (id == R.id.volley_login) {
+            Intent intent = new Intent(this, ActivityLogin.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

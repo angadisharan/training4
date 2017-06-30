@@ -11,9 +11,9 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Student List" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/volley_login"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Volley Login" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
