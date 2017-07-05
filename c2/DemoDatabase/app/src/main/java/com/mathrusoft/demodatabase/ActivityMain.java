@@ -82,6 +82,12 @@ public class ActivityMain extends AppCompatActivity
         } else if (id == R.id.volley_login) {
             Intent intent = new Intent(this, ActivityLogin.class);
             startActivity(intent);
+        } else if (id == R.id.lauch_demo_receiver) {
+            Intent intent = new Intent(this, ActivityBoradcastDemo.class);
+            startActivity(intent);
+        } else if (id == R.id.demo_activity_result) {
+            Intent intent = new Intent(this, ActivityBaseForResult.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

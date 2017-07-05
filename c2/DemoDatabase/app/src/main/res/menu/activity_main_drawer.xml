@@ -15,9 +15,15 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Volley Login" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/lauch_demo_receiver"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Launch Demo Receiver" />
+
+        <item
+            android:id="@+id/demo_activity_result"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Launch Demo Activity Result" />
+
     </group>
 
     <item android:title="Communicate">

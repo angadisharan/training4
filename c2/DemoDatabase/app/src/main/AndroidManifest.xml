@@ -21,6 +21,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityLogin" />
+        <activity android:name=".ActivityBoradcastDemo" />
+
+        <activity android:name=".ActivityBaseForResult" />
+        <activity android:name=".ActivityFront" />
+
+        <receiver android:name=".receiver.MyReceiver">
+            <intent-filter>
+                <action android:name="com.mathrusoft.demodatabase.MYCUSOSTOM_RECEIVER" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
