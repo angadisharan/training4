@@ -32,6 +32,13 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ActivityDemoService" />
+        <activity android:name=".ActivityDemoDialogue" />
+
+        <service android:name=".service.MyService" />
+        <service android:name=".service.MyBoundService" />
+        <service android:name=".service.MyIntentService" />
+
     </application>
 
 </manifest>

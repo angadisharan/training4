@@ -88,6 +88,12 @@ public class ActivityMain extends AppCompatActivity
         } else if (id == R.id.demo_activity_result) {
             Intent intent = new Intent(this, ActivityBaseForResult.class);
             startActivity(intent);
+        } else if (id == R.id.demo_service) {
+            Intent intent = new Intent(this, ActivityDemoService.class);
+            startActivity(intent);
+        } else if (id == R.id.demo_dailogue) {
+            Intent intent = new Intent(this, ActivityDemoDialogue.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

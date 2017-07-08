@@ -23,6 +23,14 @@
             android:id="@+id/demo_activity_result"
             android:icon="@drawable/ic_menu_manage"
             android:title="Launch Demo Activity Result" />
+        <item
+            android:id="@+id/demo_service"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Demo service " />
+        <item
+            android:id="@+id/demo_dailogue"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Demo dailogue " />
 
     </group>
 
